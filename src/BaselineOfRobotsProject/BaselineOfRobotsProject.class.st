@@ -13,12 +13,9 @@ BaselineOfRobotsProject >> baseline: spec [
     		with: [ spec repository: 'github://pharo-containers/Containers-Array2D/src' ].
 		
 		spec 
-			package: #'Robots-Board';
-			package: #'Robots' with: [
-				spec requires:  #( #'Robots-Board') ];
-			package: #'Robots-Tests' with: [
-				spec requires:  #( #'Robots') ]
-			]
+			package: #'Robots-Board' with: [
+				spec requires:  #( #'ContainersArray2D') ] ]
+		
 		
 
 ]
