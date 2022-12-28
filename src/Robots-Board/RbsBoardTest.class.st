@@ -58,6 +58,16 @@ ___X_'
 ]
 
 { #category : #tests }
+RbsBoardTest >> testRobotPrinting [
+	| rb b |
+	rb := RbsGround new.
+	b := RbsBoard new.
+	rb setBoard: b.
+	rb x: 5 y: 3.
+	self assert: rb printString equals: 'a RbsGround _ 5 3'
+]
+
+{ #category : #tests }
 RbsBoardTest >> testTileKnowsItsBoard [
 
 	| b |
