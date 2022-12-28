@@ -1,7 +1,7 @@
 Class {
 	#name : #RbsRobotOptimizeTest,
 	#superclass : #TestCase,
-	#category : #'Robots-Tests'
+	#category : #'Robots-Optimize-Tests'
 }
 
 { #category : #'tests - merge' }
@@ -47,24 +47,7 @@ RbsRobotOptimizeTest >> testMergeUnmergeableCommandsBecauseDifferent [
 	
 ]
 
-{ #category : #'tests - optimize ll' }
-RbsRobotOptimizeTest >> testOptimizeMergeThreeMoves [
-
-	| rb b |
-	rb := RbsRobot new.
-	b := RbsBoard new.
-	rb setBoard: b.
-	rb x: 4 y: 1.
-	rb optimizePath: 
-'mov 2
-mov 3
-mov 4'.
-	self 
-		assert: (rb path collect: [ :each | each printString ]) asOrderedCollection
-		equals: #( 'mov 9') asOrderedCollection
-]
-
-{ #category : #'tests - optimize oc' }
+{ #category : #'tests - optimize' }
 RbsRobotOptimizeTest >> testOptimizeMergeThreeMoves2 [
 
 	| rb b |
@@ -72,7 +55,7 @@ RbsRobotOptimizeTest >> testOptimizeMergeThreeMoves2 [
 	b := RbsBoard new.
 	rb setBoard: b.
 	rb x: 4 y: 1.
-	rb optimizePath2: 
+	rb optimizePath: 
 'mov 2
 mov 3
 mov 4'.
@@ -81,25 +64,7 @@ mov 4'.
 		equals: #( 'mov 9') asOrderedCollection
 ]
 
-{ #category : #'tests - optimize ll' }
-RbsRobotOptimizeTest >> testOptimizeMergeThreeMovesAndOthers [
-
-	| rb b |
-	rb := RbsRobot new.
-	b := RbsBoard new.
-	rb setBoard: b.
-	rb x: 4 y: 1.
-	rb optimizePath: 
-'mov 2
-mov 3
-mov 4
-dir #east'.
-	self 
-		assert: (rb path collect: [ :each | each printString ]) 
-		equals: #( 'mov 9' 'dir #east')
-]
-
-{ #category : #'tests - optimize oc' }
+{ #category : #'tests - optimize' }
 RbsRobotOptimizeTest >> testOptimizeMergeThreeMovesAndOthers2 [
 
 	| rb b |
@@ -107,7 +72,7 @@ RbsRobotOptimizeTest >> testOptimizeMergeThreeMovesAndOthers2 [
 	b := RbsBoard new.
 	rb setBoard: b.
 	rb x: 4 y: 1.
-	rb optimizePath2: 
+	rb optimizePath: 
 'mov 2
 mov 3
 mov 4
@@ -117,23 +82,7 @@ dir #east'.
 		equals: #( 'mov 9' 'dir #east') asOrderedCollection
 ]
 
-{ #category : #'tests - optimize ll' }
-RbsRobotOptimizeTest >> testOptimizeMergeTwoMoves [
-
-	| rb b |
-	rb := RbsRobot new.
-	b := RbsBoard new.
-	rb setBoard: b.
-	rb x: 4 y: 1.
-	rb optimizePath: 
-'mov 2
-mov 3'.
-	self 
-		assert: (rb path collect: [ :each | each printString ]) asOrderedCollection
-		equals: #( 'mov 5') asOrderedCollection
-]
-
-{ #category : #'tests - optimize oc' }
+{ #category : #'tests - optimize' }
 RbsRobotOptimizeTest >> testOptimizeMergeTwoMoves2 [
 
 	| rb b |
@@ -141,7 +90,7 @@ RbsRobotOptimizeTest >> testOptimizeMergeTwoMoves2 [
 	b := RbsBoard new.
 	rb setBoard: b.
 	rb x: 4 y: 1.
-	rb optimizePath2: 
+	rb optimizePath: 
 'mov 2
 mov 3'.
 	self 
@@ -149,24 +98,7 @@ mov 3'.
 		equals: #( 'mov 5') asOrderedCollection
 ]
 
-{ #category : #'tests - optimize ll' }
-RbsRobotOptimizeTest >> testOptimizeMergeTwoMovesAndOthers [
-
-	| rb b |
-	rb := RbsRobot new.
-	b := RbsBoard new.
-	rb setBoard: b.
-	rb x: 4 y: 1.
-	rb optimizePath: 
-'mov 2
-mov 3
-dir #east'.
-	self 
-		assert: (rb path collect: [ :each | each printString ]) 
-		equals: #( 'mov 5' 'dir #east')
-]
-
-{ #category : #'tests - optimize oc' }
+{ #category : #'tests - optimize' }
 RbsRobotOptimizeTest >> testOptimizeMergeTwoMovesAndOthers2 [
 
 	| rb b |
@@ -174,7 +106,7 @@ RbsRobotOptimizeTest >> testOptimizeMergeTwoMovesAndOthers2 [
 	b := RbsBoard new.
 	rb setBoard: b.
 	rb x: 4 y: 1.
-	rb optimizePath2: 
+	rb optimizePath: 
 'mov 2
 mov 3
 dir #east'.
@@ -183,26 +115,7 @@ dir #east'.
 		equals: #( 'mov 5' 'dir #east') asOrderedCollection
 ]
 
-{ #category : #'tests - optimize ll' }
-RbsRobotOptimizeTest >> testOptimizeNoMergeThenMergeThreeMovesAndOthers [
-
-	| rb b |
-	rb := RbsRobot new.
-	b := RbsBoard new.
-	rb setBoard: b.
-	rb x: 4 y: 1.
-	rb optimizePath: 
-'dir #north
-mov 2
-mov 3
-mov 4
-dir #east'.
-	self 
-		assert: (rb path collect: [ :each | each printString ]) asOrderedCollection
-		equals: #( 'dir #north' 'mov 9' 'dir #east') asOrderedCollection 
-]
-
-{ #category : #'tests - optimize oc' }
+{ #category : #'tests - optimize' }
 RbsRobotOptimizeTest >> testOptimizeNoMergeThenMergeThreeMovesAndOthers2 [
 
 	| rb b |
@@ -210,7 +123,7 @@ RbsRobotOptimizeTest >> testOptimizeNoMergeThenMergeThreeMovesAndOthers2 [
 	b := RbsBoard new.
 	rb setBoard: b.
 	rb x: 4 y: 1.
-	rb optimizePath2: 
+	rb optimizePath: 
 'dir #north
 mov 2
 mov 3
@@ -221,23 +134,7 @@ dir #east'.
 		equals: #( 'dir #north' 'mov 9' 'dir #east') asOrderedCollection 
 ]
 
-{ #category : #'tests - optimize ll' }
-RbsRobotOptimizeTest >> testOptimizeTwoDirections [
-
-	| rb b |
-	rb := RbsRobot new.
-	b := RbsBoard new.
-	rb setBoard: b.
-	rb x: 4 y: 1.
-	rb optimizePath: 
-'dir #north
-dir #east'.
-	self 
-		assert: (rb path collect: [ :each | each printString ]) 
-		equals: #( 'dir #east')
-]
-
-{ #category : #'tests - optimize oc' }
+{ #category : #'tests - optimize' }
 RbsRobotOptimizeTest >> testOptimizeTwoDirections2 [
 
 	| rb b |
@@ -245,7 +142,7 @@ RbsRobotOptimizeTest >> testOptimizeTwoDirections2 [
 	b := RbsBoard new.
 	rb setBoard: b.
 	rb x: 4 y: 1.
-	rb optimizePath2: 
+	rb optimizePath: 
 'dir #north
 dir #east'.
 	self 
@@ -253,22 +150,7 @@ dir #east'.
 		equals: #( 'dir #east') asOrderedCollection
 ]
 
-{ #category : #'tests - optimize ll' }
-RbsRobotOptimizeTest >> testToOptimizeAPathWeNeedAtLeastTwoElements [
-
-	| rb b |
-	rb := RbsRobot new.
-	b := RbsBoard new.
-	rb setBoard: b.
-	rb x: 4 y: 1.
-	rb optimizePath: 
-'dir #east'.
-	self 
-		assert: rb path first printString 
-		equals: 'dir #east'
-]
-
-{ #category : #'tests - optimize oc' }
+{ #category : #'tests - optimize' }
 RbsRobotOptimizeTest >> testToOptimizeAPathWeNeedAtLeastTwoElements2 [
 
 	| rb b |
@@ -276,7 +158,7 @@ RbsRobotOptimizeTest >> testToOptimizeAPathWeNeedAtLeastTwoElements2 [
 	b := RbsBoard new.
 	rb setBoard: b.
 	rb x: 4 y: 1.
-	rb optimizePath2: 
+	rb optimizePath: 
 'dir #east'.
 	self 
 		assert: rb path first printString 

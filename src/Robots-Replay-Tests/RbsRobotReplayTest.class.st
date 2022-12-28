@@ -1,7 +1,7 @@
 Class {
 	#name : #RbsRobotReplayTest,
 	#superclass : #TestCase,
-	#category : #'Robots-Tests'
+	#category : #'Robots-Replay-Tests'
 }
 
 { #category : #tests }

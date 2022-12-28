@@ -1,7 +1,7 @@
 Class {
 	#name : #RbsRobotBasicCommandsTest,
 	#superclass : #TestCase,
-	#category : #'Robots-Tests'
+	#category : #'Robots-BasicCommands-Tests'
 }
 
 { #category : #tests }

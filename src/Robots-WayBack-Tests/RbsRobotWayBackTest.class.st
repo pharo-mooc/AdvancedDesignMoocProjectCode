@@ -1,7 +1,7 @@
 Class {
 	#name : #RbsRobotWayBackTest,
 	#superclass : #TestCase,
-	#category : #'Robots-Tests'
+	#category : #'Robots-WayBack-Tests'
 }
 
 { #category : #tests }
