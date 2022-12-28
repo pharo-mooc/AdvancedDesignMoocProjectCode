@@ -7,4 +7,15 @@ https://github.com/SquareBracketAssociates/booklet-AdvancedMicroProjects
 
 So far it contains
 
-- Robots-board
+- Robots-board and one test package for each of the challenges.
+
+
+### Loading
+
+The following does not work for now.
+```
+Metacello new
+   baseline: 'AdvancedDesignMoocProjectCode';
+   repository: 'github://pharo-mooc/AdvancedDesignMoocProjectCode';
+   load.
+```
